@@ -6,15 +6,25 @@
     <title>AQHI Data Table</title>
     <style>
         body { font-family: Arial, sans-serif; }
-        .container { text-align: center; margin-top: 20px; }
-        h1 { font-size: 24px; margin-bottom: 10px; }
+        .container { text-align: center; margin-top: 18px; }
+        h1 { font-size: 28px; margin-bottom: 10px; }
         table { margin: 20px auto; border-collapse: collapse; width: 90%; max-width: 800px; }
-        th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: center; }
         th { background-color: #f4f4f4; }
-        .low { background-color: #4CAF50; color: white; } /* Green for low AQHI */
-        .moderate { background-color: #FFD700; color: black; } /* Yellow for moderate AQHI */
-        .high { background-color: #FF4500; color: white; } /* Orange for high AQHI */
-        .very-high { background-color: #8B0000; color: white; } /* Red for very high AQHI */
+       td.date-time-column { 
+            width: 200px; /* Set a wider column for date/time */
+        }
+        .low { background-color: #01cbff; color: white; }
+        .moderate { background-color: #0099cb; color: white; }
+        .high { background-color: #ffcb00; color: black; }
+        .very-high { background-color: #cc0001; color: white; }
+        .gray { background-color: #808080; color: white; } /* For invalid or N/A */
+        .footnote { 
+            font-size: 14px; 
+            color: gray; 
+            margin-top: 20px; 
+            text-align: center; 
+        }
     </style>
 </head>
 <body>
