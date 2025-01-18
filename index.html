@@ -12,7 +12,7 @@
         th, td { padding: 12px; border: 1px solid #ddd; text-align: center; }
         th { background-color: #f4f4f4; }
        td.date-time-column { 
-            width: 200px; /* Set a wider column for date/time */
+            width: 400px; /* Set a wider column for date/time */
         }
         .low { background-color: #01cbff; color: white; }
         .moderate { background-color: #0099cb; color: white; }
@@ -47,6 +47,11 @@
         </table>
     </div>
 
+    <div class="footnote">
+    <p>Data is provided by Alberta Environment and Protected Areas (AEPA).</p>
+    <p>"N/A" means forecasts are not performed at these locations.</p>
+    </div>
+    
     <script>
         // Ensure AQHI does not exceed 10
         function validateAQHI(aqhi) {
