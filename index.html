@@ -17,11 +17,13 @@
             font-size: 24px; /* Increase font size for AQHI values */
             font-weight: bold; /* Make it bold */
         }
+        img {
+            width: 300px; /* Adjust as needed */
+        }        
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>AQHI Data Table</h1>
         <table>
             <thead>
                 <tr>
@@ -37,8 +39,8 @@
                 <!-- Rows will be inserted dynamically -->
             </tbody>
         </table>
+        <img src="images/aqhilegend.png" alt="AQHI Legend">
     </div>
-
     
     <script>
         function validateAQHI(aqhi) {
