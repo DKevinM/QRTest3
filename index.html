@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AQHI Data Table</title>
     <style>
         body { font-family: Arial, sans-serif; }
         .container { text-align: center; margin-top: 18px; }
@@ -17,12 +16,6 @@
         td[style*="background-color"] { 
             font-size: 24px; /* Increase font size for AQHI values */
             font-weight: bold; /* Make it bold */
-        }
-        .footnote { 
-            font-size: 14px; /* Smaller font for footnotes */
-            color: gray; 
-            margin-top: 20px; 
-            text-align: center; 
         }
     </style>
 </head>
@@ -46,10 +39,6 @@
         </table>
     </div>
 
-    <div class="footnote">
-        <p>Data is provided by Alberta Environment and Protected Areas (AEPA).</p>
-        <p>"N/A" means forecasts are not available at this time.</p>
-    </div>
     
     <script>
         function validateAQHI(aqhi) {
