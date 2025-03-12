@@ -9,8 +9,8 @@
         h1 { font-size: 28px; margin-bottom: 10px; }
         table { margin: 20px auto; border-collapse: collapse; width: 90%; max-width: 800px; }
         th, td { padding: 12px; border: 1px solid #ddd; text-align: center; }
-        td:nth-child(1) { font-size: 20px; }
-        td:nth-child(2) { font-size: 26px; }
+        td:nth-child(1) { font-weight: bold;  font-size: 20px; }
+        td:nth-child(2) { font-weight: bold;  font-size: 26px; }
         td:nth-child(3) { font-size: 12px; }
         td:nth-child(4),
         td:nth-child(5),
@@ -53,7 +53,7 @@
         function getAQHIColor(aqhi) {
             const aqhiNumeric = Number(aqhi);
             if (isNaN(aqhiNumeric)) {
-                return "#808080"; // Gray for invalid numeric values
+                return "#D3D3D3"; // Gray for invalid numeric values
             } else if (aqhiNumeric === 1) {
                 return "#01cbff"; // HEX code for AQHI 1
             } else if (aqhiNumeric === 2) {
@@ -75,7 +75,7 @@
             } else if (aqhiNumeric === 10) {
                 return "#9a0100"; // HEX code for AQHI 10
             } else {
-                return "#808080"; // Default to gray for any unexpected values
+                return "#D3D3D3"; // Default to gray for any unexpected values
             }
         }
 
