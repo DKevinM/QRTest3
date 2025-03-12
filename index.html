@@ -94,7 +94,7 @@
 
                         const forecast = isNoForecast
                         ? "Forecast Unavailable"
-                        : `Today: ${stationData.ForecastToday || "N/A"} | Tomorrow: ${stationData.ForecastTomorrow || "N/A"} | Next Day: ${stationData.ForecastTomorrow || "N/A"}`;
+                        : `Today: ${stationData.ForecastToday || "N/A"} | Tonight: ${stationData.ForecastTonight || "N/A"} | Tomorrow: ${stationData.ForecastTomorrow || "N/A"}`;
 
                         const readingDate = stationData.ReadingDate 
                         ? new Date(stationData.ReadingDate).toLocaleString() 
