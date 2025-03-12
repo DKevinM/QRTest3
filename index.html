@@ -27,7 +27,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Station</th>
+                    <th>Community</th>
                     <th>Current AQHI</th>
                     <th>Last Updated</th>
                     <th>Forecast Today</th>
@@ -78,7 +78,7 @@
 
         async function fetchAQHI() {
             const url = "https://data.environment.alberta.ca/EdwServices/aqhi/odata/CommunityAqhis?$format=json";
-            const stations = ["Genesee", "Steeper", "Edson", "Hinton", "Drayton Valley", "Jasper"];
+            const stations = ["Drayton Valley", "Edson", "Genesee", "Hinton", "Steeper", "Jasper"];
             try {
                 const response = await fetch(url);
                 const data = await response.json();
@@ -87,11 +87,18 @@
                 stations.forEach(stationName => {
                     const stationData = data.value.find(community => community.CommunityName === stationName);
                     if (stationData) {
+                        const noForecastStations = ["steeper", "jasper"];
+                        const isNoForecast = noForecastStations.includes(stationName.toLowerCase());
+
                         const currentAQHI = stationData.Aqhi || "N/A";
-                        const forecastToday = stationData.ForecastToday || "N/A";
-                        const forecastTonight = stationData.ForecastTonight || "N/A";
-                        const forecastTomorrow = stationData.ForecastTomorrow || "N/A";
-                        const readingDate = stationData.ReadingDate ? new Date(stationData.ReadingDate).toLocaleString() : "N/A";
+
+                        const forecast = isNoForecast
+                        ? "Forecast Unavailable"
+                        : `Today: ${stationData.ForecastToday || "N/A"} | Tomorrow: ${stationData.ForecastTomorrow || "N/A"} | Next Day: ${stationData.ForecastTomorrow || "N/A"}`;
+
+                        const readingDate = stationData.ReadingDate 
+                        ? new Date(stationData.ReadingDate).toLocaleString() 
+                        : "N/A";
 
                         const row = document.createElement('tr');
                         row.innerHTML = `
