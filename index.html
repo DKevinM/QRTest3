@@ -87,7 +87,7 @@
                 stations.forEach(stationName => {
                     const stationData = data.value.find(community => community.CommunityName === stationName);
                     if (stationData) {
-                        const noForecastStations = ["steeper", "jasper"];
+                        const noForecastStations = ["Steeper", "Jasper"];
                         const isNoForecast = noForecastStations.includes(stationName.toLowerCase());
 
                         const currentAQHI = stationData.Aqhi || "N/A";
