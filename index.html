@@ -83,22 +83,16 @@
                 const response = await fetch(url);
                 const data = await response.json();
                 const tableBody = document.getElementById('aqhiTableBody');
-                const noForecastStations = ["Steeper", "Jasper"];
                 
                 stations.forEach(stationName => {
                     const stationData = data.value.find(community => community.CommunityName === stationName);
                     if (stationData) {
                         const isNoForecast = noForecastStations.includes(stationName);
-
-                        const currentAQHI = stationData.Aqhi || "N/A";
-
-                        const forecast = isNoForecast
-                        ? "Forecast Unavailable"
-                        : `Today: ${stationData.ForecastToday || "N/A"} | Tonight: ${stationData.ForecastTonight || "N/A"} | Tomorrow: ${stationData.ForecastTomorrow || "N/A"}`;
-
-                        const readingDate = stationData.ReadingDate 
-                        ? new Date(stationData.ReadingDate).toLocaleString() 
-                        : "N/A";
+                        const currentAQHI = stationData.Aqhi || "Forecast Unavailable";
+                        const forecastToday = stationData.ForecastToday || "Forecast Unavailable";
+                        const forecastTonight = stationData.ForecastTonight || "Forecast Unavailable";
+                        const forecastTomorrow = stationData.ForecastTomorrow || "Forecast Unavailable";
+                        const readingDate = stationData.ReadingDate ? new Date(stationData.ReadingDate).toLocaleString() : "N/A";
 
                         const row = document.createElement('tr');
                         row.innerHTML = `
