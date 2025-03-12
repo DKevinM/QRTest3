@@ -87,8 +87,7 @@
                 stations.forEach(stationName => {
                     const stationData = data.value.find(community => community.CommunityName === stationName);
                     if (stationData) {
-                        const isNoForecast = noForecastStations.includes(stationName);
-                        const currentAQHI = stationData.Aqhi || "Forecast Unavailable";
+                        const currentAQHI = stationData.Aqhi || "Not Available";
                         const forecastToday = stationData.ForecastToday || "Forecast Unavailable";
                         const forecastTonight = stationData.ForecastTonight || "Forecast Unavailable";
                         const forecastTomorrow = stationData.ForecastTomorrow || "Forecast Unavailable";
