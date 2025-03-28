@@ -94,6 +94,12 @@
                         const forecastToday = stationData.ForecastToday || "Forecast Unavailable";
                         const forecastTonight = stationData.ForecastTonight || "Forecast Unavailable";
                         const forecastTomorrow = stationData.ForecastTomorrow || "Forecast Unavailable";
+                        const fullForecast = `
+                          <strong>Today:</strong> ${forecastToday}<br>
+                          <strong>Tonight:</strong> ${forecastTonight}<br>
+                          <strong>Tomorrow:</strong> ${forecastTomorrow}
+                        `;
+                        document.getElementById("forecastCell").innerHTML = fullForecast;
                         const readingDate = stationData.ReadingDate ? new Date(stationData.ReadingDate).toLocaleString() : "N/A";
 
                         const row = document.createElement('tr');
@@ -104,6 +110,7 @@
                             <td style="background-color: ${getAQHIColor(forecastToday)}">${forecastToday}</td>
                             <td style="background-color: ${getAQHIColor(forecastTonight)}">${forecastTonight}</td>
                             <td style="background-color: ${getAQHIColor(forecastTomorrow)}">${forecastTomorrow}</td>
+                            <td colspan="3" id="forecastCell"></td>
                         `;
                         tableBody.appendChild(row);
                     } else {
