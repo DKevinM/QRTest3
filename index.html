@@ -94,26 +94,38 @@
                         const forecastToday = stationData.ForecastToday || "Forecast Unavailable";
                         const forecastTonight = stationData.ForecastTonight || "Forecast Unavailable";
                         const forecastTomorrow = stationData.ForecastTomorrow || "Forecast Unavailable";
-                        const fullForecast = `
-                          <strong>Today:</strong> ${forecastToday}<br>
-                          <strong>Tonight:</strong> ${forecastTonight}<br>
-                          <strong>Tomorrow:</strong> ${forecastTomorrow}
-                        `;
-                        document.getElementById("forecastCell").innerHTML = fullForecast;
                         const readingDate = stationData.ReadingDate ? new Date(stationData.ReadingDate).toLocaleString() : "N/A";
-
+                        
+                        const allUnavailable = (
+                            forecastToday === "Forecast Unavailable" &&
+                            forecastTonight === "Forecast Unavailable" &&
+                            forecastTomorrow === "Forecast Unavailable"
+                        );
+                        
                         const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${stationName}</td>
-                            <td style="background-color: ${getAQHIColor(currentAQHI)}">${currentAQHI}</td>
-                            <td>${readingDate}</td>
-                            <td style="background-color: ${getAQHIColor(forecastToday)}">${forecastToday}</td>
-                            <td style="background-color: ${getAQHIColor(forecastTonight)}">${forecastTonight}</td>
-                            <td style="background-color: ${getAQHIColor(forecastTomorrow)}">${forecastTomorrow}</td>
-                            <td colspan="3" id="forecastCell"></td>
-                        `;
-                        tableBody.appendChild(row);
-                    } else {
+
+                // Start building the row
+                let rowHTML = `
+                    <td>${stationName}</td>
+                    <td style="background-color: ${getAQHIColor(currentAQHI)}">${currentAQHI}</td>
+                    <td>${readingDate}</td>
+                `;
+
+                if (allUnavailable) {
+                    // One merged cell
+                    rowHTML += `<td colspan="3" style="text-align:center;">Forecast Unavailable</td>`;
+                } else {
+                    // Three individual forecast cells
+                    rowHTML += `
+                        <td style="background-color: ${getAQHIColor(forecastToday)}">${forecastToday}</td>
+                        <td style="background-color: ${getAQHIColor(forecastTonight)}">${forecastTonight}</td>
+                        <td style="background-color: ${getAQHIColor(forecastTomorrow)}">${forecastTomorrow}</td>
+                    `;
+                }
+
+                row.innerHTML = rowHTML;
+                tableBody.appendChild(row);
+            } else {
                         console.warn(`No data found for station: ${stationName}`);
                     }
                 });
