@@ -74,6 +74,8 @@
                 return "#cc0001"; // HEX code for AQHI 9
             } else if (aqhiNumeric === 10) {
                 return "#9a0100"; // HEX code for AQHI 10
+            } else if (aqhiNumeric > 10) {
+                return "#640100"; // HEX code for AQHI 10
             } else {
                 return "#D3D3D3"; // Default to gray for any unexpected values
             }
