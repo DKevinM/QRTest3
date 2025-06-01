@@ -109,9 +109,9 @@
                          const readingDate = stationData.ReadingDate ? new Date(stationData.ReadingDate).toLocaleString() : "N/A";
                         
                         const allUnavailable = (
-                            forecastToday === "Forecast Unavailable" &&
-                            forecastTonight === "Forecast Unavailable" &&
-                            forecastTomorrow === "Forecast Unavailable"
+                            forecastToday_raw === "Forecast Unavailable" &&
+                            forecastTonight_raw === "Forecast Unavailable" &&
+                            forecastTomorrow_raw === "Forecast Unavailable"
                         );
                         
                         const row = document.createElement('tr');
