@@ -42,9 +42,6 @@
                 <!-- Rows will be inserted dynamically -->
             </tbody>
         </table>
-	  <footer style="margin-top:20px; font-size: 13px; text-align: center;">
-	    <p><sup>1</sup> Monitored by AEPA, not validated by WCAS</p>
-	  </footer>
         <img src="aep-aqhi-scale.png">
     </div>
     
@@ -86,7 +83,7 @@
 
         async function fetchAQHI() {
             const url = "https://data.environment.alberta.ca/EdwServices/aqhi/odata/CommunityAqhis?$format=json";
-            const stations = ["Drayton Valley", "Edson", "Genesee", "Hinton", "Steeper", "Jasper"];
+            const stations = ["Drayton Valley", "Edson", "Genesee", "Hinton", "Jasper", "Steeper"];
             try {
                 const response = await fetch(url);
                 const data = await response.json();
@@ -97,8 +94,7 @@
                     const stationData = data.value.find(community => community.CommunityName === stationName);
 			if (stationData) {
 	                let displayName = stationName;
-		                if (displayName === "Jasper") displayName += "<sup>1</sup>";
-						
+		               						
                        		const rawAQHI = stationData.Aqhi;
 		       // const rawAQHI = 14; // Hardcoded test value
 	                        const displayAQHI = validateAQHI(rawAQHI || "Not Available");
